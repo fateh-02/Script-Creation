@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PowerShell Scripting Guide | Tech Workflow</title>
+
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: #141a2e;
+      --accent: #4cc9f0;
+      --accent-2: #80ffdb;
+      --text-main: #e6e6eb;
+      --text-muted: #a0a6c3;
+      --code-bg: #0f1426;
+      --border-glow: rgba(76, 201, 240, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #121a3a, var(--bg-dark));
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      background: linear-gradient(135deg, #1b2a4e, #0b0f19);
+      border-bottom: 1px solid var(--border-glow);
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    section {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+    }
+
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--accent-2);
+      font-size: 1.6rem;
+    }
+
+    section p {
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    ol {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .code-block {
+      background: var(--code-bg);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+      overflow-x: auto;
+      border: 1px solid rgba(76, 201, 240, 0.25);
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .code-block code {
+      font-family: Consolas, "Courier New", monospace;
+      color: #d4f1ff;
+      font-size: 0.95rem;
+      white-space: pre;
+      display: block;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .note {
+      background: rgba(76, 201, 240, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text-main);
+      margin-top: 1.5rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, transparent, #090d17);
+    }
+
+    footer span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Windows PowerShell Scripting</h1>
+    <p>
+      A practical, beginner-friendly guide to creating, executing, and enhancing
+      PowerShell scripts — with modern tools that make Windows configuration faster
+      and smarter.
+    </p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>1. Creating a PowerShell Script</h2>
+      <p>
+        PowerShell scripts are plain text files with a <span class="highlight">.ps1</span>
+        extension. They allow you to automate tasks such as system configuration,
+        software installation, and maintenance.
+      </p>
+
+      <ol>
+        <li>Open <strong>Notepad</strong> or <strong>Visual Studio Code</strong>.</li>
+        <li>Write your PowerShell commands.</li>
+        <li>Save the file with a <strong>.ps1</strong> extension (e.g. <code>setup.ps1</code>).</li>
+      </ol>
+
+      <div class="code-block">
+        <code>
+# Example PowerShell Script
+Write-Host "Hello from PowerShell!"
+Get-Date
+        </code>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Allowing Script Execution</h2>
+      <p>
+        By default, Windows restricts script execution for security reasons.
+        You may need to adjust the execution policy before running your script.
+      </p>
+
+      <div class="code-block">
+        <code>
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+        </code>
+      </div>
+
+      <div class="note">
+        Always understand what a script does before running it, especially if it
+        was downloaded from the internet.
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Running the Script</h2>
+      <p>
+        Once your script is ready, you can execute it directly from PowerShell.
+      </p>
+
+      <div class="code-block">
+        <code>
+cd C:\Path\To\Your\Script
+.\setup.ps1
+        </code>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Using the Chris Titus Tech Windows Utility</h2>
+      <p>
+        One of the most powerful and time-saving tools in the Windows ecosystem is
+        the <strong>Chris Titus Tech Windows Utility</strong>. It simplifies system
+        setup, debloating, performance tuning, and software installation into a
+        single interactive menu.
+      </p>
+
+      <p>
+        The utility can be launched directly from PowerShell using the following command:
+      </p>
+
+      <div class="code-block">
+        <code>
+irm christitus.com/win | iex
+        </code>
+      </div>
+
+      <p>
+        This command downloads the latest version of the utility and executes it
+        instantly, giving you access to:
+      </p>
+
+      <ol>
+        <li>One-click installation of essential software.</li>
+        <li>Windows debloat and privacy tweaks.</li>
+        <li>Performance and power optimizations.</li>
+        <li>Clear explanations of what each option does.</li>
+      </ol>
+
+      <p>
+        <strong>Chris Titus</strong> has been an enormous help to the tech community by
+        making advanced Windows configuration accessible, transparent, and safe —
+        especially for power users, IT professionals, and enthusiasts.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Created by <span>Fateh Ahmad</span> &mdash; Built for learning, automation, and modern tech workflows.
+    </p>
+  </footer>
+
+</body>
+</html>
